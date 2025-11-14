@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "TheOldGameApplication",
+      "request": "launch",
+      "mainClass": "com.theoldgame.store.TheOldGameApplication",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-TheOldGameApplication<the-old-game-store>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.theoldgame.store.TheOldGameApplication",
+      "projectName": "the-old-game-store",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
