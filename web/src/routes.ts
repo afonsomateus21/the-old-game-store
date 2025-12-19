@@ -5,6 +5,10 @@ import { Register } from "./pages/Register";
 import { Customer } from "./pages/Customer";
 import { Admin } from "./pages/Admin";
 import { jwtDecode } from "jwt-decode";
+import { AdminLayout } from "./pages/AdminLayout";
+import { AdminProducts } from "./pages/AdminProducts";
+import { AdminCategories } from "./pages/AdminCategories";
+import { AdminProfile } from "./pages/AdminProfile";
 
 interface TokenPayload {
   isAdmin: boolean;
@@ -37,7 +41,7 @@ const protectedLoader = () => {
 
 const adminLoader = () => {
   if (!isAdmin()) {
-    throw redirect("/login");
+    throw redirect("/");
   } 
   
   return null;
@@ -48,7 +52,16 @@ const router = createBrowserRouter([
   { path: "/login", Component: Login },
   { path: "/register", Component: Register },
   { path: "/profile", Component: Customer, loader: protectedLoader },
-  { path: "/admin/profile", Component: Admin, loader: adminLoader }
+  { 
+    path: "admin", 
+    Component: AdminLayout,
+    children: [
+      { path: "profile", Component: AdminProfile },
+      { path: "products", Component: AdminProducts },
+      { path: "categories", Component: AdminCategories }
+    ],
+    loader: adminLoader
+  }
 ]);
 
 export { router };
